@@ -130,3 +130,5 @@ MonoBehaviour:
   airForce: 50
   maxSpeed: 20
   jumpForce: 35
+  empowerMaterial: {fileID: 2100000, guid: 94eb20cd2d5818b41af7e764b203ab06, type: 2}
+  normalMaterial: {fileID: 2100000, guid: 3a3d21535739f4f41b5bfa63ff92547c, type: 2}

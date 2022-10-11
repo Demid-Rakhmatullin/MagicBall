@@ -20,6 +20,8 @@ public class PlayerScript : MonoBehaviour
 
     public bool Empowered { get; private set; }
     private float remaingEmpowerTime;
+    [SerializeField] private Material empowerMaterial;
+    [SerializeField] private Material normalMaterial;
     private Color empowerColor = new Color(207, 9, 199);
     private Color normalColor;
 
@@ -136,10 +138,12 @@ public class PlayerScript : MonoBehaviour
         if (remaingEmpowerTime <= 0)
         {
             transform.localScale = transform.localScale * 1.5f;
-            var material = GetComponent<Renderer>().material;  
-            material.SetColor("_EmissionColor", empowerColor * 0.01f);
-            material.SetFloat("_Metallic", 1);
-            material.SetFloat("_Glossiness", 1);
+            var renderer = GetComponent<Renderer>();
+            renderer.material = empowerMaterial;
+            //var material = GetComponent<Renderer>().material;  
+            //material.SetColor("_EmissionColor", empowerColor * 0.01f);
+            //material.SetFloat("_Metallic", 1);
+            //material.SetFloat("_Glossiness", 1);
             Empowered = true;
         }
         remaingEmpowerTime = empowerTime;
@@ -159,10 +163,12 @@ public class PlayerScript : MonoBehaviour
             if (remaingEmpowerTime <= 0)
             {
                 transform.localScale = transform.localScale / 1.5f;
-                var material = GetComponent<Renderer>().material;
-                material.SetColor("_EmissionColor", normalColor);
-                material.SetFloat("_Metallic", 0);
-                material.SetFloat("_Glossiness", 0.5f);
+                var renderer = GetComponent<Renderer>();
+                renderer.material = normalMaterial;
+                //var material = GetComponent<Renderer>().material;
+                //material.SetColor("_EmissionColor", normalColor);
+                //material.SetFloat("_Metallic", 0);
+                //material.SetFloat("_Glossiness", 0.5f);
                 Empowered = false;
                 remaingEmpowerTime = 0;
             }
