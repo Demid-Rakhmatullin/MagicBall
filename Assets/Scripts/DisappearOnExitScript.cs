@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DisappearOnExitScript : MonoBehaviour
 {
@@ -8,7 +6,7 @@ public class DisappearOnExitScript : MonoBehaviour
     {
         if (other.collider.CompareTag("Player"))
         {            
-            Destroy(gameObject);        
+            Destroy(gameObject);  
         }
     }
 }

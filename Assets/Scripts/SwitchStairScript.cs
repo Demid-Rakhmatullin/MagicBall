@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -31,6 +30,7 @@ public class SwitchStairScript : MonoBehaviour
 
             VFXActive.GetComponent<Renderer>().renderingLayerMask = 1;
             VFX.GetComponent<Renderer>().renderingLayerMask = 0;
+            StopAllCoroutines();
             StartCoroutine(AfterExplosion());
             isActive = true;
         }

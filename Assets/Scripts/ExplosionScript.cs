@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ExplosionScript : MonoBehaviour
@@ -21,6 +20,7 @@ public class ExplosionScript : MonoBehaviour
         {
             foreach (var light in lights)
                 light.gameObject.SetActive(true);
+            StopAllCoroutines();
             StartCoroutine(ProcessLight());
         }
 

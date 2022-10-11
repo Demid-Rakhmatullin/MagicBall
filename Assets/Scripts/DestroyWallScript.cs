@@ -24,6 +24,7 @@ public class DestroyWallScript : MonoBehaviour
             {
                 Explosion.Explode();
                 VFXActive.GetComponent<Renderer>().renderingLayerMask = 1;
+                StopAllCoroutines();
                 StartCoroutine(AfterExplosion(ExplosionSeconds));
             }          
         }

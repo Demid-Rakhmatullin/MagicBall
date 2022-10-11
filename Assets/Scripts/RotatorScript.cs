@@ -1,22 +1,15 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class RotatorScript : MonoBehaviour
 {
-    private static readonly float PI_DIV_4 = /*Round*/(Mathf.Sqrt(2) / 2); //45 gradus angle
-
-    //public static float Round(float f)
-    //=> f;
-    // => Mathf.Round(f * 10_000) / 10_000;
+    private static readonly float PI_DIV_4 = (Mathf.Sqrt(2) / 2); //45 gradus angle
 
     public float Speed;
     public Transform pivot;
 
     public Vector2 CurrentDirection { get; set; }
 
-   // private Vector2 center;
-    //private float radius;
     private float angle45;
     private Vector2 top;
     private Vector2 right;
@@ -34,7 +27,6 @@ public class RotatorScript : MonoBehaviour
     {
         if (Speed < 0)
             throw new System.Exception("Rotation speed must be positive number");
-        //transform.LookAt(pivot);
 
         angle45 = PI_DIV_4;
         top = new Vector2(0, 1);
@@ -54,32 +46,18 @@ public class RotatorScript : MonoBehaviour
 
     private void rotate(bool clockwise)
     {
-        //TryGetComponent(out FollowerScript follower);
-        //center = getPosition(pivot);
-        //var objectPos = getPosition(transform);
-        //radius = follower.distance; ///*Round*/(Vector2.Distance(objectPos, center));
-       
+        //don't use unity build in finctions for rotation
+        //just for education purposes
 
-        //var relativePosition = objectPos - center;
         var newDirection = clockwise
             ? rotateClockwise()
             : rotateCounterclockwise();
-        //transform.position = new Vector3(newPosition.x, transform.position.y, newPosition.y);
+
         CurrentDirection = newDirection;
-        //transform.LookAt(pivot);
-        //if (TryGetComponent(out FollowerScript follower))
-            //follower.UpdateDelta();
-
-        //Debug.Log($"Rot dist: {radius}");
-        //Debug.Log($"New pos: {newDirection}");
-
-        //Debug.Log((clockwise ? "Clockwise; " : "Counterclockwise; ") + octant + ";" +
-        //    " Current: " + objectPos + "; Args: " + relativePosition + "; Go to: " + newPosition);
-        //Instantiate(marker, transform.position, Quaternion.identity);
     }
 
     public static Vector2 getPosition(Transform transform)
-        => new Vector2(/*Round*/(transform.position.x), /*Round*/(transform.position.z));
+        => new Vector2(transform.position.x, transform.position.z);
 
 
     //based on Midpoint circle algorithm (MCA) - https://en.wikipedia.org/wiki/Midpoint_circle_algorithm

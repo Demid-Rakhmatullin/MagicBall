@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
@@ -22,8 +19,6 @@ public class PlayerScript : MonoBehaviour
     private float remaingEmpowerTime;
     [SerializeField] private Material empowerMaterial;
     [SerializeField] private Material normalMaterial;
-    private Color empowerColor = new Color(207, 9, 199);
-    private Color normalColor;
 
     private Transform playerCamera;
 
@@ -34,30 +29,19 @@ public class PlayerScript : MonoBehaviour
     {
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera")
             .GetComponent<Transform>();
-        normalColor = GetComponent<Renderer>().material.GetColor("_EmissionColor");
         distanceToGround = GetComponent<Collider>().bounds.extents.y;
     }
 
     void FixedUpdate()
     {
-        //if (rb.velocity.y > 0)
-        //    grounded = CalcGrounded();
         bool? grounded = null;
-        //float currSpeed;
-        
+
         if (HasMoveInputs() && GetHorizontalSpeed(out float currentSpeed) < maxSpeed)
         {
             grounded = CalcGrounded();
-            //var currentForce = force;
             var currentForce = grounded.Value ? force : airForce;
-            //if (isGrounded.Value)
-            //{
-                var relSpeed = currentSpeed > 0 ? currentSpeed / maxSpeed : 0;
-                //Debug.Log(relSpeed);
-                currentForce *= relSpeed < 0.3f ? 0.5f : (relSpeed < 0.5f ? 0.75f : 1f);
-                //currentForce *= relSpeed;
-            //}
-
+            var relSpeed = currentSpeed > 0 ? currentSpeed / maxSpeed : 0;
+            currentForce *= relSpeed < 0.3f ? 0.5f : (relSpeed < 0.5f ? 0.75f : 1f);
             var cameraDir = getCameraLookDirection();
 
             if (moveForward)
@@ -70,7 +54,7 @@ public class PlayerScript : MonoBehaviour
                 rb.AddForce(Quaternion.Euler(0, 270f, 0) * cameraDir * currentForce);
         }
 
-        if (jumpCounter > 0 && (grounded ?? CalcGrounded()) /* && rb.velocity.y == 0*/)         
+        if (jumpCounter > 0 && (grounded ?? CalcGrounded()))         
                 jumpCounter = 0;
 
         if (!Empowered)
@@ -82,7 +66,6 @@ public class PlayerScript : MonoBehaviour
             }
 
         jumpInputCounter = 0;
-        //Debug.Log(rb.velocity.magnitude);
     }
 
     void Update()
@@ -96,14 +79,6 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
             Application.Quit();
     }
-
-    //void OnCollisionEnter(Collision other)
-    //{
-    //    if (other.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
-    //    {
-    //        jumpCounter = 0;
-    //    }
-    //}
 
     private void CheckMoveInputs()
     {
@@ -120,16 +95,12 @@ public class PlayerScript : MonoBehaviour
     {
         var result = Physics.Raycast(transform.position, -Vector3.up, distanceToGround + 0.1f)
             || Physics.OverlapSphere(transform.position, distanceToGround + 0.1f, 1 << LayerMask.NameToLayer("Ground")).Any();
-        //Debug.Log(result);
         return result;
     }
 
     private Vector3 getCameraLookDirection()
     {
-        //var flatNormalizedLook = (skipHeight(transform.position) - skipHeight(playerCamera.position)).normalized;       
-        //return new Vector3(flatNormalizedLook.x, 0, flatNormalizedLook.y);
-
-        var cameraFwd = playerCamera.forward;//(transform.position + playerCamera.forward).normalized;
+        var cameraFwd = playerCamera.forward;
         return new Vector3(cameraFwd.x, 0, cameraFwd.z);
     }
 
@@ -143,10 +114,6 @@ public class PlayerScript : MonoBehaviour
             transform.localScale = transform.localScale * 1.5f;
             var renderer = GetComponent<Renderer>();
             renderer.material = empowerMaterial;
-            //var material = GetComponent<Renderer>().material;  
-            //material.SetColor("_EmissionColor", empowerColor * 0.01f);
-            //material.SetFloat("_Metallic", 1);
-            //material.SetFloat("_Glossiness", 1);
             Empowered = true;
         }
         remaingEmpowerTime = empowerTime;
@@ -154,7 +121,7 @@ public class PlayerScript : MonoBehaviour
 
     private float GetHorizontalSpeed(out float currentSpeed)
     {
-        currentSpeed = new Vector2(rb.velocity.x, rb.velocity.z).magnitude; //rb.velocity.magnitude;
+        currentSpeed = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
         return currentSpeed;
     }
 
@@ -168,10 +135,6 @@ public class PlayerScript : MonoBehaviour
                 transform.localScale = transform.localScale / 1.5f;
                 var renderer = GetComponent<Renderer>();
                 renderer.material = normalMaterial;
-                //var material = GetComponent<Renderer>().material;
-                //material.SetColor("_EmissionColor", normalColor);
-                //material.SetFloat("_Metallic", 0);
-                //material.SetFloat("_Glossiness", 0.5f);
                 Empowered = false;
                 remaingEmpowerTime = 0;
             }

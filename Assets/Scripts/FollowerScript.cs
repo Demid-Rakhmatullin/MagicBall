@@ -18,13 +18,11 @@ public class FollowerScript : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(objToFollow.position.x, objToFollow.position.y + ShiftY, objToFollow.position.z - ShiftZ);
-        //currentPos = SkipHeight(transform.position);
         flatDistance = Vector2.Distance(SkipHeight(transform.position), SkipHeight(objToFollow.position));
         rotator = GetComponent<RotatorScript>();
 
         transform.LookAt(objToFollow);
         lastDirection = rotator.CurrentDirection;
-        //UpdateDelta();
     }
 
     public void LateUpdate()
@@ -40,19 +38,7 @@ public class FollowerScript : MonoBehaviour
             transform.LookAt(objToFollow);
             lastDirection = rotator.CurrentDirection;
         }
-
-
-        //transform.position = objToFollow.position - delta;
-        //var pos = (objToFollow.position - transform.position).normalized * distance;
-        //transform.position = objToFollow.position + new Vector3(pos.x, ShiftY, -pos.z);
-
-        //var direction = -transform.forward * distance;
-        //transform.position = objToFollow.position + new Vector3(direction.x, ShiftY, direction.z);
-        //Debug.Log($"Follow pos: {transform.position }");
     }
-
-    //public void UpdateDelta()
-    //    => delta = objToFollow.position - transform.position;
 
     private Vector2 SkipHeight(Vector3 vector)
         => new Vector2(vector.x, vector.z);

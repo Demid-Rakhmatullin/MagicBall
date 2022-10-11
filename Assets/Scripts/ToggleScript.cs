@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ToggleScript : MonoBehaviour
 {
@@ -16,8 +14,12 @@ public class ToggleScript : MonoBehaviour
             target.GetComponent<MeshRenderer>().enabled = !toggled;
             RotationScript rotation = target.GetComponent<RotationScript>();
             if (rotation != null)
-                if (!toggled) rotation.StartRotation();
-                else rotation.StopRotation();
+            {
+                if (!toggled)
+                    rotation.StartRotation();
+                else
+                    rotation.StopRotation();
+            }
             toggled = !toggled;
         }
     }

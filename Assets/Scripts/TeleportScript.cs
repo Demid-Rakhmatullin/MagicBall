@@ -7,6 +7,12 @@ public class TeleportScript : MonoBehaviour
     public bool ResetPlayerCamera;
 
     private bool isTeleportedInside;
+    private Transform playerCamera;
+
+    private void Start()
+    {
+        playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -18,18 +24,13 @@ public class TeleportScript : MonoBehaviour
             //process player camera
             if (ResetPlayerCamera && other.gameObject.CompareTag("Player"))
             {
-                var playerCamera = GameObject.FindGameObjectWithTag("MainCamera")
-                    .GetComponent<Transform>();
                 var player = other.gameObject.transform;
-                
-                //playerCamera.TryGetComponent(out FollowerScript followerScript);
-                //followerScript?.LateUpdate();
 
                 //make player camera look at same direction as destination teleport rotation
                 if (ResetPlayerCamera)
                 {
-                    var distance = /*RotatorScript.Round*/(
-                        Vector2.Distance(RotatorScript.getPosition(playerCamera), RotatorScript.getPosition(player.transform)));
+                    var distance = Vector2.Distance(RotatorScript.getPosition(playerCamera), 
+                        RotatorScript.getPosition(player.transform));
                     //set player camera to default position around the player
                     playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z - distance);
 
@@ -45,11 +46,12 @@ public class TeleportScript : MonoBehaviour
                     playerCamera.transform.position = new Vector3(rotated.x + player.transform.position.x, playerCamera.transform.position.y, rotated.y + player.transform.position.z);
 
                     playerCamera.transform.LookAt(player);
+
+                    //update other scripts
                     var rotator = playerCamera.GetComponent<RotatorScript>();
                     rotator.CurrentDirection = new Vector2(0, -1);
                     var follower = playerCamera.GetComponent<FollowerScript>();
-                    follower.LastDirection = default;
-                    //followerScript?.UpdateDelta();
+                    follower.LastDirection = default;                    
                 }
             }
 

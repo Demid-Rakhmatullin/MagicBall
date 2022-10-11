@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RotationScript : MonoBehaviour
 {
     public float Speed = 10;
     public bool StartManually;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (!StartManually)

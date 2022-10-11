@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BoosterScript : MonoBehaviour
 {
     public float force;
-
-    private Rigidbody playerRb;
 
     void OnTriggerEnter(Collider other)
     {

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ElevatorScript : MonoBehaviour
 {
@@ -23,7 +21,7 @@ public class ElevatorScript : MonoBehaviour
     {
         if (other.collider.CompareTag("Player") && !elevate)
         {
-            Invoke("MoveUp", moveDelay);
+            Invoke(nameof(MoveUp), moveDelay);
         }
     }
 
@@ -40,7 +38,7 @@ public class ElevatorScript : MonoBehaviour
                     nextY = startY + height;
                     elevate = false;
                     moveUp = false;
-                    Invoke("MoveDown", moveDelay);
+                    Invoke(nameof(MoveDown), moveDelay);
                 }
                 transform.position = new Vector3(transform.position.x, nextY, transform.position.z);
             }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DisappearScript : MonoBehaviour
 {
@@ -27,7 +25,7 @@ public class DisappearScript : MonoBehaviour
                 isTriggered = true;
                 switchActivated = false;
                 renderer.material = ActiveMatereial;
-                Invoke("Deactivate", DisappearSeconds);
+                Invoke(nameof(Deactivate), DisappearSeconds);
             }
         }
     }
