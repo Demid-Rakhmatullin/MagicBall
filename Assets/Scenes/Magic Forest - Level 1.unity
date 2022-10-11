@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 664.8503, g: 435.67203, b: 324.9806, a: 1}
+  m_IndirectSpecularColor: {r: 361.24268, g: 480.67175, b: 592.2829, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 342ac89a07a0b7647a62c4a1b21af93d,
     type: 2}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 151567014}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -119,6 +119,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
@@ -704,6 +706,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireworks3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5430149318118019963, guid: 44546fcaeff578a47a6e87dbc346dcdc,
+        type: 3}
+      propertyPath: m_Version
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44546fcaeff578a47a6e87dbc346dcdc, type: 3}
 --- !u!4 &99332140 stripped
@@ -767,6 +774,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 470480521}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &129808490 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1182786346551334716, guid: dcb999407cab517468dbca6c3ef62f29,
+    type: 3}
+  m_PrefabInstance: {fileID: 1182786346405527517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &129808491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129808490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e5b7faee7ee464f8a5bbf1d953de47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wall: {fileID: 745470177}
+  RuinedWall: {fileID: 1444554282}
+  Explosion: {fileID: 996846139}
+  ExplosionSeconds: 2
 --- !u!4 &133766307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4847011075247650, guid: 2fabc3c6c8508ca418a92e449c8a7366,
@@ -842,6 +871,67 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1780906632}
   m_PrefabAsset: {fileID: 0}
+--- !u!850595691 &151567014
+LightingSettings:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Settings.lighting
+  serializedVersion: 3
+  m_GIWorkflowMode: 1
+  m_EnableBakedLightmaps: 1
+  m_EnableRealtimeLightmaps: 1
+  m_RealtimeEnvironmentLighting: 1
+  m_BounceScale: 1
+  m_AlbedoBoost: 1
+  m_IndirectOutputScale: 1
+  m_UsingShadowmask: 1
+  m_BakeBackend: 1
+  m_LightmapMaxSize: 1024
+  m_BakeResolution: 40
+  m_Padding: 2
+  m_TextureCompression: 1
+  m_AO: 0
+  m_AOMaxDistance: 1
+  m_CompAOExponent: 1
+  m_CompAOExponentDirect: 0
+  m_ExtractAO: 0
+  m_MixedBakeMode: 2
+  m_LightmapsBakeMode: 1
+  m_FilterMode: 1
+  m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+  m_ExportTrainingData: 0
+  m_TrainingDataDestination: TrainingData
+  m_RealtimeResolution: 2
+  m_ForceWhiteAlbedo: 0
+  m_ForceUpdates: 0
+  m_FinalGather: 0
+  m_FinalGatherRayCount: 256
+  m_FinalGatherFiltering: 1
+  m_PVRCulling: 1
+  m_PVRSampling: 1
+  m_PVRDirectSampleCount: 32
+  m_PVRSampleCount: 512
+  m_PVREnvironmentSampleCount: 256
+  m_PVREnvironmentReferencePointCount: 2048
+  m_LightProbeSampleCountMultiplier: 4
+  m_PVRBounces: 2
+  m_PVRMinBounces: 2
+  m_PVREnvironmentMIS: 1
+  m_PVRFilteringMode: 1
+  m_PVRDenoiserTypeDirect: 1
+  m_PVRDenoiserTypeIndirect: 1
+  m_PVRDenoiserTypeAO: 1
+  m_PVRFilterTypeDirect: 0
+  m_PVRFilterTypeIndirect: 0
+  m_PVRFilterTypeAO: 0
+  m_PVRFilteringGaussRadiusDirect: 1
+  m_PVRFilteringGaussRadiusIndirect: 5
+  m_PVRFilteringGaussRadiusAO: 2
+  m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+  m_PVRFilteringAtrousPositionSigmaIndirect: 2
+  m_PVRFilteringAtrousPositionSigmaAO: 1
 --- !u!1001 &160260139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4258,6 +4348,11 @@ PrefabInstance:
       propertyPath: Destination
       value: 
       objectReference: {fileID: 2116205831}
+    - target: {fileID: 8662745978731481031, guid: a088737fd86e7f7469444a22b8a54528,
+        type: 3}
+      propertyPath: m_Version
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8662745980013614756, guid: a088737fd86e7f7469444a22b8a54528,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4439,6 +4534,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireworks3
       objectReference: {fileID: 0}
+    - target: {fileID: 5430149318118019963, guid: 44546fcaeff578a47a6e87dbc346dcdc,
+        type: 3}
+      propertyPath: m_Version
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44546fcaeff578a47a6e87dbc346dcdc, type: 3}
 --- !u!1 &591628916
@@ -4489,6 +4589,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4513,6 +4614,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &591628919
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7061,6 +7163,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fireworks3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5430149318118019963, guid: 44546fcaeff578a47a6e87dbc346dcdc,
+        type: 3}
+      propertyPath: m_Version
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44546fcaeff578a47a6e87dbc346dcdc, type: 3}
 --- !u!1 &977365232 stripped
@@ -7230,6 +7337,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37fafbb03c8e35043953b84ba8c39664, type: 3}
+--- !u!114 &996846139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2117968742, guid: a72907eaf841a534fbe6d6081521d127,
+    type: 3}
+  m_PrefabInstance: {fileID: 225700529958391554}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac30e393d1fb5841912a1261554e71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1004372878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8568,6 +8687,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fireworks3 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5430149318118019963, guid: 44546fcaeff578a47a6e87dbc346dcdc,
+        type: 3}
+      propertyPath: m_Version
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44546fcaeff578a47a6e87dbc346dcdc, type: 3}
@@ -13673,6 +13797,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 10.71384
       objectReference: {fileID: 0}
+    - target: {fileID: 4710953547462669564, guid: dcb999407cab517468dbca6c3ef62f29,
+        type: 3}
+      propertyPath: m_Version
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4710953548613723545, guid: dcb999407cab517468dbca6c3ef62f29,
         type: 3}
       propertyPath: m_RootOrder
@@ -13747,6 +13876,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162645691080085468, guid: dcb999407cab517468dbca6c3ef62f29,
+        type: 3}
+      propertyPath: m_Version
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcb999407cab517468dbca6c3ef62f29, type: 3}
@@ -15434,6 +15568,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Break Wall Switch
       objectReference: {fileID: 0}
+    - target: {fileID: 4710953547462669564, guid: dcb999407cab517468dbca6c3ef62f29,
+        type: 3}
+      propertyPath: m_Version
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4710953548613723545, guid: dcb999407cab517468dbca6c3ef62f29,
         type: 3}
       propertyPath: m_RootOrder
@@ -15458,6 +15597,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162645691080085468, guid: dcb999407cab517468dbca6c3ef62f29,
+        type: 3}
+      propertyPath: m_Version
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcb999407cab517468dbca6c3ef62f29, type: 3}
@@ -15533,6 +15677,11 @@ PrefabInstance:
       propertyPath: Destination
       value: 
       objectReference: {fileID: 578100714}
+    - target: {fileID: 8662745978731481031, guid: a088737fd86e7f7469444a22b8a54528,
+        type: 3}
+      propertyPath: m_Version
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8662745980013614756, guid: a088737fd86e7f7469444a22b8a54528,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15547,6 +15696,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2114567898, guid: 78660b56ed563db4fba670a5a4aab4f7, type: 3}
+      propertyPath: m_Version
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 5377602775564937236, guid: 78660b56ed563db4fba670a5a4aab4f7,
         type: 3}
       propertyPath: m_RootOrder
@@ -15721,6 +15874,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750281826455666612, guid: da6c9a13bad332543a89023464789a70,
+        type: 3}
+      propertyPath: m_Version
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7288221442179036017, guid: da6c9a13bad332543a89023464789a70,
         type: 3}

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TeleportScript : MonoBehaviour
 {
@@ -23,8 +21,8 @@ public class TeleportScript : MonoBehaviour
                 var playerCamera = GameObject.FindGameObjectWithTag("MainCamera")
                     .GetComponent<Transform>();
                 var player = other.gameObject.transform;
-
-                playerCamera.TryGetComponent(out FollowerScript followerScript);
+                
+                //playerCamera.TryGetComponent(out FollowerScript followerScript);
                 //followerScript?.LateUpdate();
 
                 //make player camera look at same direction as destination teleport rotation
@@ -47,6 +45,10 @@ public class TeleportScript : MonoBehaviour
                     playerCamera.transform.position = new Vector3(rotated.x + player.transform.position.x, playerCamera.transform.position.y, rotated.y + player.transform.position.z);
 
                     playerCamera.transform.LookAt(player);
+                    var rotator = playerCamera.GetComponent<RotatorScript>();
+                    rotator.CurrentDirection = new Vector2(0, -1);
+                    var follower = playerCamera.GetComponent<FollowerScript>();
+                    follower.LastDirection = default;
                     //followerScript?.UpdateDelta();
                 }
             }

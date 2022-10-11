@@ -13,6 +13,8 @@ public class FollowerScript : MonoBehaviour
     private RotatorScript rotator;
     private float flatDistance;
 
+    public Vector2 LastDirection { get => lastDirection; set { lastDirection = value; } }
+
     void Start()
     {
         transform.position = new Vector3(objToFollow.position.x, objToFollow.position.y + ShiftY, objToFollow.position.z - ShiftZ);

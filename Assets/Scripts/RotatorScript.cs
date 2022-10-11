@@ -13,7 +13,7 @@ public class RotatorScript : MonoBehaviour
     public float Speed;
     public Transform pivot;
 
-    public Vector2 CurrentDirection { get; private set; }
+    public Vector2 CurrentDirection { get; set; }
 
    // private Vector2 center;
     //private float radius;
@@ -46,9 +46,9 @@ public class RotatorScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
             rotate(false);
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
             rotate(true);
     }
 
