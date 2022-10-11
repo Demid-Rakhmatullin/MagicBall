@@ -92,6 +92,9 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && jumpInputCounter < maxJumpCount)
             jumpInputCounter++;
+
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
     }
 
     //void OnCollisionEnter(Collision other)
